@@ -14,8 +14,16 @@ def analyser_commande():
 
 
 def produire_historique(symbole, debut, fin, valeur):
-    
+
+    if fin is None:
+        fin = datetime.date.today()
+    if debut is None:
+        debut = fin
+    if valeur is None:
+        valeur = 'fermeture'
+
     for i in symbole:
+        
         url = f'https://pax.ulaval.ca/action/{i}/historique/'
         params = {'début': debut, 'fin': fin}
         réponse = requests.get(url=url, params=params)
