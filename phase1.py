@@ -41,7 +41,8 @@ def produire_historique(symbole, debut, fin, valeur):
         for j in réponse['historique']:
             liste.append(((datetime.datetime.strptime(j, '%Y-%m-%d')).date(),
                           réponse['historique'][j][valeur]))
-        print(f'titre={compagnie}: valeur={valeur}, début={repr(debut)}, fin={repr(fin)}\n{liste[::-1]}')
+        print(f'titre={compagnie}: valeur={valeur}, début={repr(debut)},fin={repr(fin)}')
+        print(liste[::-1])
 
 args = analyser_commande()
 produire_historique(args.symbole, args.début, args.fin, args.valeur)
